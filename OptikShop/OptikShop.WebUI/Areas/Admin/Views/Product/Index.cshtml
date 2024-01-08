@@ -1,0 +1,86 @@
+﻿@using OptikShop.WebUI.Areas.Admin.Models;
+
+@model List<ProductListViewModel>
+
+<div class="mt-5">
+
+    <div  class="float-end"> <a asp-area="Admin" asp-controller="Product" asp-action="Form" class="btn btn-primary">Yeni Ürün</a> </div>
+
+</div>
+
+<div class="card mb-4 mt-5">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        DataTable Example
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Ürün Adı</th>
+                        <th>Birim Fiyatı</th>
+                        <th>Stok Miktarı</th>
+                        <th>Kategori</th>                    
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Ürün Adı</th>
+                        <th>Birim Fiyatı</th>
+                        <th>Stok Miktarı</th>
+                        <th>Kategori</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                   @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+
+                                @if (string.IsNullOrWhiteSpace(item.ImagePath))
+                                {
+                                    <img src="~/images/noImage.jpg" width="155" height="155" />
+                                }
+                                else
+                                {
+
+                                    @*DataLightbox aynı olanlar arasında slayt geçişi yapılır.*@
+                                    <a href="~/images/products/@item.ImagePath" data-lightbox="@item.CategoryId" data-title="@item.Name">
+                                        <img src="~/images/products/@item.ImagePath" width="155" height="155" />
+                                    </a>
+                                }
+                            </td>
+                            <td>@item.Name</td>
+                            <td>@item.UnitPrice</td>
+                            <td>@item.UnitInStock</td>
+                            <td>@item.CategoryName</td>
+                            <td>
+                                <a asp-area="Admin" asp-action="Edit" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
+                                <a asp-area="Admin" asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger">Sil</a>
+                            </td>
+                        </tr>
+                    }                                                            
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+
+            $('#productTable').DataTable();
+                    
+        });
+
+    </script>
+}
+                                                                                                                                                                  

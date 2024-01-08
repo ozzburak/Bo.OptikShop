@@ -1,0 +1,42 @@
+﻿@using OptikShop.WebUI.Models;
+@model AddContactViewModel
+
+
+<!--İletişim Başlangıç-->
+<section class="p-5 text-center iletisim" id="İletisim">
+
+    <div class="container">
+
+        <h2 class="mb-5 font-weight-bold">iletisim</h2>
+        <hr class="ayrac" /> <i class="fa-solid fa-leaf igri"></i>
+
+        <form method="post" asp-area="" asp-controller="Contact" asp-action="Form" class="col-md-10 text-left m-auto">
+
+            <input asp-for="Id" type="hidden" />
+            <div class="form-group row">
+
+                <label class="col-md-4 align-self-center">Ad:</label>
+                <input asp-for="FirstName" type="text" class="form-control col-md-8" />
+            </div>
+            <div class="form-group row">
+
+                <label class="col-md-4 align-self-center">Soyad:</label>
+                <input asp-for="LastName" type="text" class="form-control col-md-8" />
+            </div>
+            <div class="form-group row">
+
+                <label for="" class="col-md-4 align-self-center">Email:</label>
+                <input asp-for="Email" type="email" class="form-control col-md-8" />
+            </div>
+            <div class="form-group row">
+
+                <label for="" class="col-md-4 align-self-center">Mesajınız:</label>
+                <textarea asp-for=Message id="" cols="30" rows="10" class="form-control col-md-8"></textarea>
+            </div>
+            <div class="form-group row">
+                <button type="submit" class="col-md-3 btn btn-primary">Gönder</button>
+
+            </div>
+        </form>
+    </div>
+</section>

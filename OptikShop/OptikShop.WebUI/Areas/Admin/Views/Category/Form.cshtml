@@ -1,0 +1,43 @@
+﻿@using OptikShop.WebUI.Areas.Admin.Models;
+
+@model AddCategoryViewModel
+
+
+
+<div class="row">
+
+    <div class="col-8 offset-2">
+
+
+        <div class="card mt-5" style="border:solid 2px">
+
+            <div class="card-header fw-bold fs-5">
+                Kategori Ekleme
+            </div>
+
+            <div class="card-body">
+
+                <form method="post" asp-area="Admin" asp-controller="Category" asp-action="Form">
+
+
+                    <input asp-for="Id" type="hidden" />
+
+                    <div class="mb-2">
+                        <label >İsim</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label >Açıklama</label>
+                        <input asp-for="Description"  class="form-control" />
+                        <span class="text-danger fw-bold mt-1"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3 float-end">Kaydet</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
